@@ -1,18 +1,17 @@
 
 
-
-
-function reqListener () {
-    //console.log(this.responseText);
-
-    var data = jQuery.toArrays(this.responseText);
-    console.log(data);
-}
-
+var data;
 
 window.onload = function() {
-    var oReq = new XMLHttpRequest();
-    oReq.addEventListener("load", reqListener);
-    oReq.open("GET", "data.csv");
-    oReq.send();
+    Papa.parse("data.csv", {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+            if (results.errors[0]) {
+                console.warn("Error:", results.errors[0]);
+            }
+            data = results;
+        }
+    });
 };
