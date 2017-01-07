@@ -1,0 +1,22 @@
+{
+    "name": "chartjs-project",
+    "version": "1.0.0",
+    "description": "Simple data project with ChartJS.",
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/pfernandez/chartjs-project"
+    },
+    "main": "index.html",
+    "scripts": {
+        "start": "http-server",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Paul Fernandez",
+    "license": "ISC",
+    "dependencies": {
+        "chart.js": "^2.4.0",
+        "http-server": "^0.9.0",
+        "jquery-csv": "^0.2.0",
+        "papaparse": "^4.1.2"
+    }
+}
