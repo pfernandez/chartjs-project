@@ -1,10 +1,10 @@
 {
-  "name": "chartjs-project",
+  "name": "vidstreams",
   "version": "1.0.0",
-  "description": "Simple data project with ChartJS.",
+  "description": "Simple data project with Google Charts.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pfernandez/chartjs-project"
+    "url": "https://github.com/pfernandez/vidstreams"
   },
   "main": "index.html",
   "scripts": {
@@ -14,7 +14,6 @@
   "author": "Paul Fernandez",
   "license": "ISC",
   "dependencies": {
-    "live-server": "^1.1.0",
-    "papaparse": "^4.1.2"
+    "live-server": "^1.1.0"
   }
 }
