@@ -41,7 +41,10 @@ id,content_moid,title,short_node_id,start_time,end_time,stall_time,stall_count,p
             <h3>3. Merge the result into a final representation as an object entity, ready
                 for analysis.</h3>
             <p>The final shape of the event data will simplify later visualization with the
-                charting library I've selected.</p>
+                charting library I've selected. Note how each event has two numbers
+                associated with it; the first is the event start time (in milliseconds), and
+                the second is the event end time, inferred from the start time of the
+                following event.</p>
             <pre id="model"></pre>
 
             <p>The full dataset is an array of similar entites, each taken from a separate
