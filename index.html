@@ -1,12 +1,74 @@
 <!doctype html>
 <html>
     <head>
-        <title>Kollective Project</title>
+        <title>ChartJS Project</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <canvas id="myChart" width="400" height="400"></canvas>
-        <script src="node_modules/chart.js/dist/Chart.min.js"></script>
+        <div class="main">
+
+            <h1>Modeling and Visualization of Event Data</h1>
+            <p>This is a demo of a simple data transformation and visualization, using an
+                example CSV containing live video stream data. I've chosen to write it in JavaScript
+                because of it's ubiquity on the Web, and tried to keep the code simple and
+                straightforward, using only a single <code>script.js</code> file and
+                omitting production details like compilation and a testing suite.</p>
+
+            <p><small>
+                Paul Fernandez<br>
+                <em>paul4nandez@gmail.com</em>
+            </small></p>
+
+            <h2>Data Model</h2>
+            <p>Prior to visualization, the CSV data needs to be transformed into a format
+                suitable for use in a JavaScript data structure. A portion of this initial
+                data looks like this:</p>
+            <pre>
+id,content_moid,title,short_node_id,start_time,end_time,stall_time,stall_count,prepare_time,play_duration,event_data,context,browser,browser_ver,os,os_ver
+1,0f39d60643904224ab5706212f097375,All Hands Meeting,kPNH+nd3cG5RvweY,11/17/2016 18:12,11/17/2016 18:14,8289,6,5172,144598,:6:3246:3:5172:2:11590:6:11609:3:13416:3:13962:3:29056:3:44317:3:59458:2:69609:6:69628:3:71373:3:74515:2:83192:6:83216:3:85001:2:89509:6:89542:3:91322:3:104630:2:105392:6:105409:6:105619:6:106676:6:106967:3:107496:2:112129:6:112165:6:112338:6:113351:6:113673:6:114817:6:115063:3:115706:3:119664:3:134731:99:149770,mc,ie,11,windows,7
+            </pre>
+            <p>I've outlined the primary steps below, including snapshots of some example data
+                so that you can follow along.</p>
+
+            <h3>1. Read the CSV file and parse it into an initial JSON structure, leveraging
+                the excellent <a href="http://papaparse.com/">Papa Parse</a> library.</h3>
+            <pre id="initial-json"></pre>
+
+            <h3>2. Using the following event code map, manually parse the event data into a
+                consumable object.</h3>
+            <pre id="event-codes"></pre>
+
+            <h3>3. Merge the result into a final representation as an object entity, ready
+                for analysis.</h3>
+            <p>The final shape of the event data will simplify later visualization with the
+                charting library I've selected.</p>
+            <pre id="model"></pre>
+
+            <p>The full dataset is an array of similar entites, each taken from a separate
+                stream of the same event. You can view all of the data by opening a JavaScript
+                console while viewing this web page.</p>
+
+            <h2>Visualization</h2>
+            <p>I've chosen <a href="https://developers.google.com/chart/">Google Charts</a> to
+                create the data visualization after reviewing the available options, because
+                it had a gant-style "timeline" chart available out of the box.</p>
+            <h3>A Single Stream</h3>
+            <p>It's easy to visualize the "pause-buffer-play" sequence when viewing a single
+                event stream this way, and the Timeline chart provided by Google has some nice
+                features. Try hovering over the segments to see details about each event.
+            <div id="stream-timeline"></div>
+
+            <h3>The Full Dataset</h3>
+            <p>To save space, the data for each stream has been collapsed into a single row.
+                We run into some difficulty when trying to view all of the streams on a single
+                set of axes, although you <em>can</em> scroll this chart to the right to see
+                all of the data. A far better approach would be to compare the data analytically,
+                with calculated values that normalize the data, such as "percentage of time
+                spent buffering".
+            <div id="all-streams-timeline"></div>
+        </div>
+
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
         <script src="node_modules/papaparse/papaparse.min.js"></script>
         <script src="script.js"></script>
     </body>
