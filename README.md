@@ -1,4 +1,4 @@
-#View online
+#View Online
 Visit [https://pfernandez.github.io/vidstreams/](https://pfernandez.github.io/vidstreams/).
 
 #Install and Run
