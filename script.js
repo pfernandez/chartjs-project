@@ -43,8 +43,7 @@
     };
 
     // Draw the chart for a single video stream.
-    function visualizeStream(stream) {
-        var container = document.getElementById('stream-timeline');
+    function visualizeStream(stream, container) {
         var chart = new google.visualization.Timeline(container);
         var dataTable = new google.visualization.DataTable();
         dataTable.addColumn({ type: 'string', id: 'Event' });
@@ -58,8 +57,7 @@
     }
 
     // Draw the chart for all video stream.
-    function visualizeAllStreams(streams) {
-        var container = document.getElementById('all-streams-timeline');
+    function visualizeAllStreams(streams, container) {
         var chart = new google.visualization.Timeline(container);
         var dataTable = new google.visualization.DataTable();
 
@@ -104,14 +102,17 @@
                 // Transform data and display results.
                 var elem1 = document.getElementById("initial-json"),
                     elem2 = document.getElementById("event-codes"),
-                    elem3 = document.getElementById("model");
+                    elem3 = document.getElementById("model"),
+							  		elem4 = document.getElementById('stream-timeline'),
+								  	elem5 = document.getElementById('all-streams-timeline');
+							
                 elem1.innerHTML = JSON.stringify(results.data[0], null, 2);
                 var model = transformData(results.data, eventCodes);
                 elem2.innerHTML = JSON.stringify(eventCodes, null, 2);
                 elem3.innerHTML = JSON.stringify(model[0], null, 2);
                 console.log("Dataset:\n", model);
-                visualizeStream(model[0]);
-                visualizeAllStreams(model);
+                visualizeStream(model[0], elem4);
+                visualizeAllStreams(model, elem5);
             }
         });
     });
