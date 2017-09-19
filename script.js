@@ -103,8 +103,8 @@
                 var elem1 = document.getElementById("initial-json"),
                     elem2 = document.getElementById("event-codes"),
                     elem3 = document.getElementById("model"),
-							  		elem4 = document.getElementById('stream-timeline'),
-								  	elem5 = document.getElementById('all-streams-timeline');
+                    elem4 = document.getElementById('stream-timeline'),
+                    elem5 = document.getElementById('all-streams-timeline');
 							
                 elem1.innerHTML = JSON.stringify(results.data[0], null, 2);
                 var model = transformData(results.data, eventCodes);
